@@ -1,10 +1,13 @@
 //your code here
 let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-let articles = ["a", "an" , "the"];
-touristSpots.split('');
-if(touristSpots == articles){
-	touristSpots.remove();
+
+function removeArticle(name) {
+  const articles = ['a', 'an', 'the'];
+  const words = name.split(' ');
+  if (articles.includes(words[0].toLowerCase())) {
+    words.shift();
+  }
+  return words.join(' ');
 }
-touristSpots.join('');
 touristSpots.sort();
 
