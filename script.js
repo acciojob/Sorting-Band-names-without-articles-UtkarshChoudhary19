@@ -9,5 +9,16 @@ function removeArticle(name) {
   }
   return words.join(' ');
 }
-touristSpots.sort();
+touristSpots.sort((a, b) => {
+  const nameA = removeArticle(a);
+  const nameB = removeArticle(b);
+  return nameA.localeCompare(nameB);
+});
+const ulElement = document.getElementById('band');
+touristSpots.forEach(spot => {
+  const li = document.createElement('li');
+  li.textContent = spot;
+  ulElement.appendChild(li);
+});
+
 
