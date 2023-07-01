@@ -1,24 +1,28 @@
-//your code here
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
+const touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
 
-function removeArticle(name) {
-  const articles = ['a', 'an', 'the'];
-  const words = name.split(' ');
-  if (articles.includes(words[0].toLowerCase())) {
-    words.shift();
+function removeArticle(str) {
+  const words = str.split(' ');
+
+  if (words.length > 1 && (words[0].toLowerCase() === 'a' ||
+                           words[0].toLowerCase() === 'an' ||
+                           words[0].toLowerCase() === 'the')) {
+    words.splice(0, 1);
   }
+
   return words.join(' ');
 }
-touristSpots.sort((a, b) => {
-  const nameA = removeArticle(a);
-  const nameB = removeArticle(b);
+
+touristSpots.sort((spotA, spotB) => {
+  const nameA = removeArticle(spotA);
+  const nameB = removeArticle(spotB);
+
   return nameA.localeCompare(nameB);
 });
-const ulElement = document.getElementById('band');
+
+const ul = document.getElementById('band');
+
 touristSpots.forEach(spot => {
   const li = document.createElement('li');
-  li.textContent = spot;
-  ulElement.appendChild(li);
+  li.innerText = spot;
+  ul.appendChild(li);
 });
-
-
